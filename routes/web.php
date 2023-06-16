@@ -21,5 +21,5 @@ Route::get('/addData', function () {
 });
 
 Route::post('/addData', [ControllerLaporan::class, 'addData'])->name('addDataLaporan');
-Route::put('/laporan/{id}', [ControllerLaporan::class, 'updateData'])->name('editDataLaporan');
+Route::match(['put','get'],'/laporan/{id}', [ControllerLaporan::class, 'editLaporan'])->name('editDataLaporan');
 Route::delete('/deleteLaporan/{id}',[ControllerLaporan::class, 'deleteData'])->name('deleteData');
