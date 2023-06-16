@@ -60,7 +60,7 @@
           <tr>
           <th scope="row">{{$counter++}}</th>
           <td>{{ $laporan->judul }}</td>
-          <td>"{{ $laporan->deskripsi }}"</td>
+          <td>"{{ "$laporan->deskripsi" }}"</td>
           <td>@if ( $laporan->id_status==1)
                   Belum Selesai
                   @else
