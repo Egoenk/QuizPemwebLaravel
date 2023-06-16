@@ -16,10 +16,8 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->string('judul');
             $table->string('deskripsi');
-            $table->unsignedBigInteger('id_status');
+            $table->integer('id_status');
             $table->timestamps();
-
-            $table->foreign('id_status')->references('id')->on('statuses')->onDelete('cascade');
         });
     }
 

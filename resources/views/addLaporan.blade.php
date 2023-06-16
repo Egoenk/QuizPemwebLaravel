@@ -12,15 +12,22 @@
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><h4>H1D021009 | Quiz Pemrograman WEB II</h4></a>
+  <a class="navbar-brand" href="/"><h4>H1D021009 | Quiz Pemrograman WEB II</h4></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Tabel Tugas <span class="sr-only">(current)</span></a>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Daftar Tabel
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/">Tabel Semua Tugas</a>
+          <a class="dropdown-item" href="/selesai">Tabel Tugas Selesai</a>
+          <a class="dropdown-item" href="/belum">Tabel Tugas Belum Selesai</a>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/addData">Tambah Tugas</a>
@@ -37,12 +44,12 @@
               <div class="form-group">
                 <label for="exampleInputEmail1">Judul</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Judul" name='judul'>
-                <small id="emailHelp" class="form-text text-muted">Judul Singkat Mengenai Laporan</small>
+                <small id="emailHelp" class="form-text text-muted">Judul Singkat Mengenai Tugas</small>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Deskripsi</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='deskripsi'></textarea>
-                <small id="emailHelp" class="form-text text-muted">Deskripsi Singkat Mengenai Laporan</small>
+                <small id="emailHelp" class="form-text text-muted">Deskripsi Singkat Mengenai Tugas</small>
               </div>
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Status</label>
@@ -50,7 +57,7 @@
                   <option value='2'>Selesai</option>
                   <option value='1'>Belum Selesai</option>
                 </select>
-                <small id="emailHelp" class="form-text text-muted">Status Laporan</small>
+                <small id="emailHelp" class="form-text text-muted">Status Tugas</small>
                 
             </div>
               <button type="submit" class="btn btn-primary">Submit</button>

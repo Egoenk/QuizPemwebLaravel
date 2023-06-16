@@ -11,6 +11,26 @@ class ControllerLaporan extends Controller
         return view('view', ['laporan' => $laporan]);
     }
 
+    public function indexSelesai(){
+        $laporan = Laporan::query()
+            ->where('id_status', 2)
+            ->get();
+        if($laporan == NULL) {
+            return redirect('/')->with('status','Tugas Kosong');
+            }
+        return view('view', ['laporan' => $laporan]);
+    }
+
+    public function indexBelum(){
+        $laporan = Laporan::query()
+            ->where('id_status', 1)
+            ->get();
+        if($laporan == NULL) {
+            return redirect('/')->with('status','Tugas Kosong');
+        }
+        return view('view', ['laporan' => $laporan]);
+    }
+
     public function deskripsi($id){
         $laporan = Laporan::findOrFail($id);;
         return view('detail', ['laporan' => $laporan]);
@@ -27,23 +47,41 @@ class ControllerLaporan extends Controller
         return redirect('/')->with('status', 'Data Berhasil Dimasukan!');
     }
 
+    public function formEdit($id){
+        $laporan = Laporan::findOrFail($id);;
+        return view('editLaporan' ,['laporan' => $laporan]);
+    }
     public function editLaporan(Request $request , $id){
 
         $laporan = Laporan::findOrFail($id);
-
+        
         $laporan->judul = $request->input('judul');
         $laporan->deskripsi = $request->input('deskripsi');
         $laporan->id_status = $request->input('status');
         $laporan->save();
     
-        return redirect('/')->with('status', 'Data Berhasil Dimasukan!');
+        return redirect('/')->with('status', 'Data Berhasil Diupdate!');
     }
 
-    public function deleteData($id)
+    public function deleteData(int $id)
     {
-        $laporan = Laporan::findOrFail($id);
+        $laporan = Laporan::find($id);
         $laporan->delete();
+        return redirect('/')->with('status','Data Berhasil Dihapus');
+    }
 
-        return redirect()->route('/');
+    public function updateStatus(Request $request ,int $id)
+    {   
+        $laporan = Laporan::find($id);
+        if($laporan->id != $id) {
+            return redirect('/info/{{ $laporan->id }}');
+        }
+        if($request->input('status') == '1') {
+            $laporan->id_status = 1;
+        } else if($request->input('status') == '2') {
+            $laporan->id_status = 2;
+        }
+        $laporan->save();
+        return redirect('/');
     }
 }

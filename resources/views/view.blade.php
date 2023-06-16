@@ -13,16 +13,22 @@
   <body>
     
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><h4>H1D021009 | Quiz Pemrograman WEB II</h4></a>
+  <a class="navbar-brand" href="/"><h4>H1D021009 | Quiz Pemrograman WEB II</h4></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Tabel Tugas <span class="sr-only">(current)</span></a>
-      </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Daftar Tabel
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/">Tabel Semua Tugas</a>
+          <a class="dropdown-item" href="/selesai">Tabel Tugas Selesai</a>
+          <a class="dropdown-item" href="/belum">Tabel Tugas Belum Selesai</a>
+        </div>
       <li class="nav-item">
         <a class="nav-link" href="/addData">Tambah Tugas</a>
       </li>
@@ -60,7 +66,9 @@
                   @else
                   Selesai
                   @endif</td>
-          <td><a href="/info/{{ $laporan->id }}"><button type="button" class="btn btn-info">Info</button></a> <a href="/laporan/{{ $laporan->id }}"><button type="button" class="btn btn-primary">Edit</button></a> <a href="/deleteLaporan/{{ $laporan->id }}"><button type="button" class="btn btn-danger">Hapus</button></a></td>
+          <td><a href="/info/{{ $laporan->id }}"><button type="button" class="btn btn-info">Info</button></a> 
+          <a href="/formlaporan/{{ $laporan->id }}"><button type="button" class="btn btn-primary">Edit</button></a> 
+          <a href="/deleteLaporan/{{ $laporan->id }}"><button type="button" class="btn btn-danger">Hapus</button></a></td>
           </tr>
           @endforeach
         </tbody>
